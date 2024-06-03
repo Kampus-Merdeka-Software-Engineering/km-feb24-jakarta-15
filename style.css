@@ -1,226 +1,421 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Capstone Project Team 15</title>
-  <link rel="icon" href="asset/revou_icon.svg">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+body {
+  margin: 0;
+  padding: 0;
+  color: #141D38;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', sans-serif;
+}
 
-  <!-- DataTables -->
-  <!-- DataTables CSS -->
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <!-- DataTables JS -->
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
-</head>
-<body>
+.container-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+}
 
-  <!-- Head Section -->
-  <header>
-    <div class="container-head">
-      <a href="#home"><img src="asset/Logo_Kampus_Merdeka_Kemendikbud 1.svg" alt="Kampus Merdeka Logo"></a>
-      <nav>
-        <a href="#home" class="nav-btn nav-link"><i class="fa-solid fa-house"></i> Home</a>
-        <a href="#about" class="nav-btn nav-link"><i class="fa-solid fa-circle-info"></i> About</a>
-        <a href="#dashboard" class="nav-btn nav-link"><i class="fa-solid fa-square-poll-vertical"></i> Dashboard</a>
-        <a href="#table" class="nav-btn nav-link"><i class="fa-solid fa-magnifying-glass-chart"></i> Table</a>
-      </nav>
-    </div>
-  </header>
+.container-head img {
+  padding: 2vh 0;
+  padding-left: 2vw;
+}
 
-  <!-- Main Section -->
-  <main>
-    <!-- Home Section -->
-    <section id="home" class="home">
-      <div class="tagline"><h1 class="pad">Superstore Giant</h1>
-      <p class="pad">US Ecommerce with Multiple Branches</p>
-      <a href="#about" class="nav-link"><button class="pad">Read More <i class="fa-solid fa-chevron-right"></i></button></a>
-      </div>
-      <img src="asset/hero-img.svg" alt="hero image" class="hero">
-    </section>
+img {
+  width: 80px;
+}
 
-    <!-- About Section -->
-    <section id="about" class="about subheading">
-      <div class="background">
-        <h2>About</h2>
-        <hr>
-        <p>With growing demands and cut-throat competitions in the market, a Superstore Giant is seeks to get to understand what works best for them by understand which products, regions, categories and customer segments they should target or avoid.</p>
-        <p><span>Giant Superstore</span> is a retail chain offering a diverse range of products, including office supplies, furniture, technology, and consumer goods. Sales data analysis provides insights into product performance, regional sales, customer segmentation, sales performance, and market trends. Leveraging the rich insights from the dataset, Superstore Giant can optimize inventory, marketing strategies, and strategic decision-making based on data, helping the company grow and maintain its position as a leading retail destination.</p>
-      </div>
-      
-      <div class="about-grid">
-        <div class="customer-about">
-          <div class="title">
-            <h3><i class="fa-solid fa-person"></i> 790++</h3>
-          </div>
-          <div class="desc">
-            <p>Customers</p>
-          </div>
-          </div>
-        <div class="product-about">
-          <div class="title">
-            <h3><i class="fa-solid fa-cart-shopping"></i> 3.7M++</h3>
-          </div>
-          <div class="desc">
-            <p>Product Sold</p>
-          </div>
-        </div>
-        <div class="profit-about">
-          <div class="title">
-            <h3><i class="fa-solid fa-money-bill-trend-up"></i> 110K++</h3>
-          </div>
-          <div class="desc">
-            <p>Profit in USD</p>
-          </div>
-        </div>
-      </div>
-    </section>
+.nav-btn {
+  color: #224379;
+  text-decoration: none;
+  padding: 5px 10px;
+  margin-right: 1vw;
+}
 
-    <!-- Dashboard Section -->
-    <section id="dashboard" class="dashboard subheading">
-      <h2>Dashboard</h2>
-      <hr>
-      <aside>
-        <h3>Giant Superstore Dashboard</h3>
-        <form action="">
+.nav-btn:hover {
+  color: #3861A9;
+  border: 1px solid;
+  border-radius: 25px;
+}
 
-          <!-- Year Filter -->
-          <select name="" id="yearDropdown">
-            <option value="">Year</option>
-            <option value="2014">2014</option>
-            <option value="2015">2015</option>
-            <option value="2016">2016</option>
-            <option value="2017">2017</option>
-          </select>
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-          <!-- Discount Filter -->
-          <select name="" id="discountDropdown">
-            <option value="">Discount Type</option>
-            <option value="noDiscount">No Discount</option>
-            <option value="lowDiscount">Low Discount</option>
-            <option value="moderateDiscount">Moderate Discount</option>
-            <option value="bigDiscount">Big Discount</option>
-          </select>
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  height: 100vh;
+}
 
-          <!-- Region Filter -->
-          <select name="" id="regionDropdown">
-            <option value="">Region</option>
-            <option value="West">West</option>
-            <option value="East">East</option>
-            <option value="Central">Central</option>
-            <option value="South">South</option>
-          </select>
+.hero {
+  width: 740px;
+  border-radius: 10px;
+}
 
-          <!-- Segment Filter -->
-          <select name="" id="segmentDropdown">
-            <option value="">Segment</option>
-            <option value="Consumer">Consumer</option>
-            <option value="Corporate">Corporate</option>
-            <option value="Home Office">Home Office</option>
-          </select>
-        </form>
-      </aside>
+.pad {
+  margin-bottom: 3vh;
+}
 
-      <!-- Dashboard layout -->
-      <div class="container-main">
+h1 {
+  font-size: 2.7rem;
+}
 
-        <!-- Card Chart -->
-        <section class="section1">
-          <div class="card">
-            <div class="card-title">
-              <p><i class="fa-solid fa-chart-line"></i> </p>
-            </div>
-            <div class="card-desc">
-              <small>Net Profit (USD)</small>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-title">
-              <p><i class="fa-solid fa-chart-column"></i> </p>
-            </div>
-            <div class="card-desc">
-              <small>Revenue (USD)</small>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-title">
-              <p><i class="fa-solid fa-id-card"></i> </p>
-            </div>
-            <div class="card-desc">
-              <small>CLV (USD)</small>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-title">
-              <p><i class="fa-solid fa-basket-shopping"></i> </p>
-            </div>
-            <div class="card-desc">
-              <small>Total Orders</small>
-            </div>
-          </div>
-        </section>
-        
-        <!-- Main Chart Part 1 -->
-        <section class="section2">
-          <div class="chart1">
-            <canvas id="myChart1"></canvas>
-          </div>
-          <div class="chart2">
-            <canvas id="myChart2"></canvas>
-          </div>
-        </section>
+.tagline p {
+  font-size: 1.2rem;
+  color: #A5A5A5;
+}
 
-        <!-- Main Chart Part 2 -->
-        <section class="section3">
-          <div class="chart3">
-            <canvas id="myChart3"></canvas>
-          </div>
-          <div class="chart3">
-            <canvas id="myChart4"></canvas>
-          </div>
-          <div class="chart3">
-            <canvas id="myChart5"></canvas>
-          </div>
-        </section>
-      </div>
-    </section>
-    <!-- Table -->
-    <section id="table" class="table-grid">
-      <div class="table-prop subheading">
-        <h2>Table</h2>
-        <hr>
-        <table id="myTable" class="display" width="100%" data-order='[[ 1, "desc" ]]'>
-          <thead>
-            <tr>
-              <th>Product Name</th>
-              <th>CLV</th>
-              <th>Profit</th>
-              <th>Sales</th>
-              <th>Quantity</th>
-            </tr>
-          </thead>
-          <tbody>
-          </tbody>
-        </table>
-      </div>
-    </section>
-  </main>
+button {
+  background-color: #497BD9;
+  color: white;
+  padding: 10px 40px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}
 
-  <footer>
-    <div class="container-foot">
-      <p>&copy; 2024 Team 15. All rights reserved.</p>
-    </div>
-  </footer>
+button:hover {
+  background-color: #FFD45D;
+  color: #141D38;
+}
+
+.subheading {
+  text-align: center;
+  width: 100%;
+  padding-top: 20vh;
+}
+
+.about {
+  height: 60vh;
+}
+
+.background {
+  margin: 0 60px;
+}
+
+.subheading h2 {
+  font-size: 2rem;
+}
+
+hr {
+  width: 50px;
+  height: 3px;
+  background-color: #FFD45D;
+  border: none;
+  margin-bottom: 30px;
+}
+
+span {
+  color: #FFCA56;
+  font-weight: bolder;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-areas: 
+  'customer product profit';
+}
+
+.customer-about {
+  grid-area: customer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-about {
+  grid-area: product;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profit-about {
+  grid-area: profit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  color: #FFCA56;
+  font-size: 1.9rem;
+}
+
+.desc {
+  margin-top: -40px;
+  font-weight: bold;
+}
+
+aside {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3C69C1;
+  margin-top: 40px;
+  padding: 0 20px;
+  position: sticky;
+  top: 68px;
+  z-index: 1;
+}
+
+aside h3 {
+  color: white;
+  font-size: 1.4rem;
+}
+
+.container-main {
+  background-color: #E9E9E9;
+  display: grid;
+  grid-template-areas: 
+    'section1 section1 section1 section1'
+    'section2 section2 section2 section2'
+    'section3 section3 section3 section3'
+    'section4 section4 section4 section4';
+  grid-template-columns: repeat(4, 1fr);
+  padding: 0 20px;
+}
+
+.section1 {
+  grid-area: section1;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.card {
+  background-color: white;
+  color: #FFCA56;
+  border-radius: 10px;
+  width: 24.1%;
+  font-weight: bold;
+}
+
+.card-title {
+  font-size: 1.5rem;
+}
+
+.card-desc {
+  margin-top: -20px;
+  padding-bottom: 20px;
+}
+
+canvas {
+  background-color: white;
+  border-radius: 10px;
+  height: 250px;
+}
+
+.section2 {
+  margin-top: 24px;
+  grid-area: section2;
+  display: flex;
+  justify-content: space-between;
+}
+
+.chart1 {
+  width: 54.4%;
+}
+
+.chart2 {
+  width: 44.4%;
+}
+
+.section3 {
+  margin: 24px 0;
+  grid-area: section3;
+  display: flex;
+  justify-content: space-between;
+}
+
+.chart3 {
+  width: 32.6%;
+}
+
+.table-grid {
+  margin-bottom: 24px;
+  grid-area: section4;
+  width: 100%;
+  background-color: #E9E9E9;
+  display: flex;
+}
+
+.table-prop {
+  width: 100%;
+  overflow-x: auto; /* Enables horizontal scroll */
+  overflow-y: hidden; /* Disables vertical scroll if not needed */
+  -webkit-overflow-scrolling: touch;
+  background-color: white;
+  border-radius: 10px;
+  margin: 0 24px 24px;
+  padding: 20vh 12px 4px;
+}
+
+footer {
+  display: flex;
+  background-color: #141D38;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  margin-top: -24px;
+  height: 10vh;
+}
+
+/* Default styles for large screens (Laptop/Desktop) */
+@media (min-width: 1280px) {
+  /* Your existing layout styles */
+}
+
+/* Laptop/Desktop: 1024px x 1366px ke atas, pertahankan layout dengan ukuran komponen lebih kecil */
+@media (max-width: 1024px) {
+  .container-head {
+    display: none;
+  }
+
+  .home, .about {
+    height: auto;
+  }
+
+  .hero {
+    display: none;
+  }
+
+  .home {
+    padding: 100px 0;
+    background-image: url(asset/hero-img.svg);
+    background-size: contain;
+    width: 100%;
+  }
+
+  .subheading {
+    padding-top: 0;
+  }
+
+  .hero {
+    width: 540px;
+  }
   
-  <!-- Chart.JS -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+  .pad {
+    margin-left: 4vw;
+  }
 
-  <!-- Ensure this script tag correctly points to your script.js file -->
-  <script src="script.js"></script>
-</body>
-</html>
+  .tagline p {
+    color: #141D38;
+  }
+
+  aside {
+    top: 0;
+  }
+
+  .card {
+    width: 24%;
+  }
+
+  footer {
+    height: 20vh;
+  }
+}
+
+@media (max-width: 430px) {
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  .home {
+    padding: 20px;
+    background-image: url(asset/hero-img.svg);
+    background-size: cover;
+    width: 100%;
+  }
+
+  .background {
+    margin: 0 4vw;
+  }
+
+  .subheading h2 {
+    font-size: 1.2rem;
+    margin-top: 5vh;
+  }
+
+  .about p {
+    font-size: 0.7rem;
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .desc {
+    margin: -24px;
+  }
+
+  aside h3 {
+    font-size: 1rem;
+  }
+
+  .container-main {
+    background-color: #E9E9E9;
+    display: grid;
+    grid-template-areas: 
+      'section1 section1'
+      'section2 section2'
+      'section3 section3'
+      'section4 section4';
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .section1 {
+    grid-area: section1;
+    display: grid;
+    grid-template-areas: 
+      'card card'
+      'card card';
+  }
+
+  .card {
+    width: 42vw;
+    font-weight: bold;
+    margin: 7px;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+  }
+
+  .card-desc {
+    margin: -15px;
+    padding-bottom: 30px;
+    font-size: 0.9rem;
+  }
+
+  .section2 {
+    grid-area: section2;
+    display: grid;
+    grid-template-areas: 
+      'chart1 chart1'
+      'chart2';
+  }
+
+  .section3 {
+    grid-area: section3;
+    display: grid;
+    grid-template-areas: 
+    'chart3'
+    'chart3'
+    'chart3';
+  }
+
+  .chart1 , .chart2 , .chart3 {
+    width: 90vw;
+    margin-bottom: 24px;
+  }
+}
