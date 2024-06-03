@@ -434,6 +434,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+$(document).ready(function(){
+    $('.nav-link').click(function(e){
+      e.preventDefault();
+      var target = $(this).attr('href');
+      $('html, body').animate({
+        scrollTop: $(target).offset().top
+      }, 500);
+    });
+  });
+
 $(document).ready(function() {
     $.getJSON("asset/table.json", function(data) {
         console.log("Data loaded successfully:", data); // Debugging: log the data to console
