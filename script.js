@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     let myChart1, myChart2, myChart3, myChart4, myChart5;
     
-    fetch('/asset/data.json')
+    fetch('asset/data.json')
         .then(response => response.json())
         .then(data => {
             document.getElementById('yearDropdown').addEventListener('change', () => updateCharts(data));
@@ -435,7 +435,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 $(document).ready(function() {
-    $.getJSON("../asset/table.json", function(data) {
+    $.getJSON("asset/table.json", function(data) {
         console.log("Data loaded successfully:", data); // Debugging: log the data to console
         $('#myTable').DataTable({
             data: data,
