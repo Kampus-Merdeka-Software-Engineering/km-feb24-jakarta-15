@@ -277,7 +277,7 @@ footer {
 /* Laptop/Desktop: 1024px x 1366px ke atas, pertahankan layout dengan ukuran komponen lebih kecil */
 @media (max-width: 1024px) {
   .container-head {
-    display: none;
+    display: flex;
   }
 
   .home, .about {
