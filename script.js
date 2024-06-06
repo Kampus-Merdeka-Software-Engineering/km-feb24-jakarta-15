@@ -44,8 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Display Total Orders
             totalOrderElement.innerHTML = `<i class="fa-solid fa-shopping-cart"></i> ${orderCount.toLocaleString()}`;
         });
-    
-    
+
     function updateCharts(data) {
         const year = document.getElementById('yearDropdown').value;
         const discount = document.getElementById('discountDropdown').value;
@@ -143,6 +142,17 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             options: {
                 maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Total Orders and Profit of Sub-Category'
+                    },
+                    subtitle: {
+                        display: true,
+                        text: 'Count of Orders and Profit for each Sub-Category',
+                        font: {style: 'italic'}
+                    }
+                },
                 scales: {
                     y: {
                         beginAtZero: true,
@@ -205,6 +215,17 @@ document.addEventListener('DOMContentLoaded', function () {
             options: {
                 indexAxis: 'y',
                 maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Top 5 Performing Sub-Category'
+                    },
+                    subtitle: {
+                        display: true,
+                        text: 'Rank of Sub-Category Based on Sum of Profit',
+                        font: {style: 'italic'}
+                    }
+                },
                 scales: {
                     x: {
                         beginAtZero: true,
@@ -282,6 +303,18 @@ document.addEventListener('DOMContentLoaded', function () {
             options: {
                 maintainAspectRatio: false,
                 plugins: {
+                    title: {
+                        display: true,
+                        text: 'Ratio of Category by Revenue'
+                    },
+                    subtitle: {
+                        display: true,
+                        text: 'Proportion of each category by Sum of Sales',
+                        font: {style: 'italic'}
+                    },
+                    legend: {
+                        position: 'bottom'
+                    },
                     datalabels: {
                         formatter: (value, context) => {
                             const percentage = ((value / totalRevenue3) * 100).toFixed(2);
@@ -356,6 +389,17 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             options: {
                 maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Total Quantity and Profit of Category'
+                    },
+                    subtitle: {
+                        display: true,
+                        text: 'Sum of Quantity and Profit for each Category',
+                        font: {style: 'italic'}
+                    }
+                },
                 scales: {
                     y: {
                         beginAtZero: true,
@@ -416,6 +460,18 @@ document.addEventListener('DOMContentLoaded', function () {
             options: {
                 maintainAspectRatio: false,
                 plugins: {
+                    title: {
+                        display: true,
+                        text: 'Ratio of Discount Type by New Customer'
+                    },
+                    subtitle: {
+                        display: true,
+                        text: 'Proportion of Discount Type that affects to reach New Customer',
+                        font: {style: 'italic'}
+                    },
+                    legend: {
+                        position: 'bottom'
+                    },
                     datalabels: {
                         formatter: (value, context) => {
                             const percentage = ((value / 793) * 100).toFixed(2);
@@ -434,19 +490,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-$(document).ready(function(){
-    $('.nav-link').click(function(e){
-      e.preventDefault();
-      var target = $(this).attr('href');
-      $('html, body').animate({
-        scrollTop: $(target).offset().top
-      }, 500);
-    });
-  });
-
 $(document).ready(function() {
     $.getJSON("asset/table.json", function(data) {
-        console.log("Data loaded successfully:", data); // Debugging: log the data to console
         $('#myTable').DataTable({
             data: data,
             columns: [
@@ -459,3 +504,13 @@ $(document).ready(function() {
         });
     });
 });
+
+$(document).ready(function(){
+    $('.nav-link').click(function(e){
+      e.preventDefault();
+      var target = $(this).attr('href');
+      $('html, body').animate({
+        scrollTop: $(target).offset().top
+      }, 500);
+    });
+  });
