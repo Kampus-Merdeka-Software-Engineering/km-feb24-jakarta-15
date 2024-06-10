@@ -1,3 +1,4 @@
+// Chart
 document.addEventListener('DOMContentLoaded', function () {
     const ctx1 = document.getElementById('myChart1').getContext('2d');
     const ctx2 = document.getElementById('myChart2').getContext('2d');
@@ -142,10 +143,19 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             options: {
                 maintainAspectRatio: false,
+                layout: {
+                    padding: 20
+                },
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Total Orders and Profit of Sub-Category'
+                        text: 'Total Orders and Profit of Sub-Category',
+                        font: {
+                            size: 17
+                        },
+                        padding: {
+                            bottom: 10
+                        }
                     },
                     subtitle: {
                         display: true,
@@ -215,10 +225,19 @@ document.addEventListener('DOMContentLoaded', function () {
             options: {
                 indexAxis: 'y',
                 maintainAspectRatio: false,
+                layout: {
+                    padding: 20
+                },
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Top 5 Performing Sub-Category'
+                        text: 'Top 5 Performing Sub-Category',
+                        font: {
+                            size: 17
+                        },
+                        padding: {
+                            bottom: 10
+                        }
                     },
                     subtitle: {
                         display: true,
@@ -302,15 +321,27 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             options: {
                 maintainAspectRatio: false,
+                layout: {
+                    padding: 20
+                },
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Ratio of Category by Revenue'
+                        text: 'Ratio of Category by Revenue',
+                        font: {
+                            size: 17
+                        },
+                        padding: {
+                            bottom: 10
+                        }
                     },
                     subtitle: {
                         display: true,
                         text: 'Proportion of each category by Sum of Sales',
-                        font: {style: 'italic'}
+                        font: {style: 'italic'},
+                        padding: {
+                            bottom: 10
+                        }
                     },
                     legend: {
                         position: 'bottom'
@@ -389,10 +420,19 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             options: {
                 maintainAspectRatio: false,
+                layout: {
+                    padding: 20
+                },
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Total Quantity and Profit of Category'
+                        text: 'Total Quantity and Profit of Category',
+                        font: {
+                            size: 17
+                        },
+                        padding: {
+                            bottom: 10
+                        }
                     },
                     subtitle: {
                         display: true,
@@ -459,15 +499,27 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             options: {
                 maintainAspectRatio: false,
+                layout: {
+                    padding: 20
+                },
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Ratio of Discount Type by New Customer'
+                        text: 'Ratio of New Customer by Discount Type',
+                        font: {
+                            size: 17
+                        },
+                        padding: {
+                            bottom: 10
+                        }
                     },
                     subtitle: {
                         display: true,
                         text: 'Proportion of Discount Type that affects to reach New Customer',
-                        font: {style: 'italic'}
+                        font: {style: 'italic'},
+                        padding: {
+                            bottom: 10
+                        }
                     },
                     legend: {
                         position: 'bottom'
@@ -490,19 +542,52 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+// Table
 $(document).ready(function() {
     $.getJSON("asset/table.json", function(data) {
         $('#myTable').DataTable({
             data: data,
             columns: [
                 { data: 'Product_Name' },
-                { data: 'CLV' },
-                { data: 'Profit' },
-                { data: 'Revenue' },
-                { data: 'Quantity' }
-            ]
+                { data: 'Discount_Type' },
+                { data: 'No_Discount' },
+                { data: 'Discount_Average' },
+                { data: 'Net_Profit' }
+            ],
+            'scrollX': true
         });
     });
+});
+
+// Insight
+var currentButton = null;
+var currentInsight = null;
+
+function showInsight(insightNumber) {
+    // Hide the current insight
+    if (currentInsight !== null) {
+        currentInsight.style.display = 'none';
+    }
+    
+    // Deactivate the current button
+    if (currentButton !== null) {
+        currentButton.classList.remove('active');
+    }
+
+    // Activate the clicked button
+    var clickedButton = document.getElementById('button-' + insightNumber);
+    clickedButton.classList.add('active');
+    currentButton = clickedButton;
+
+    // Show the selected insight
+    var newInsight = document.getElementById('insight-' + insightNumber);
+    newInsight.style.display = 'block';
+    currentInsight = newInsight;
+}
+
+// Display insight 1 by default
+document.addEventListener('DOMContentLoaded', function() {
+    showInsight(1);
 });
 
 $(document).ready(function(){
