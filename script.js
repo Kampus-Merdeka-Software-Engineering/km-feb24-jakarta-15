@@ -550,7 +550,6 @@ $(document).ready(function() {
             columns: [
                 { data: 'Product_Name' },
                 { data: 'Discount_Type' },
-                { data: 'No_Discount' },
                 { data: 'Discount_Average' },
                 { data: 'Net_Profit' }
             ],
